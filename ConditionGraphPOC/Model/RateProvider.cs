@@ -20,16 +20,14 @@ namespace ConditionGraphPOC.Model
 
         public string[] GetRates(Date arrivalDate, Date departureDate)
         {
-            var canBeUsedForDate = new RateMustApplyForAllDatesInPeriod(arrivalDate, departureDate);
+            var canBeUsedForDate = new RateCanBeUsedForRoomstay(arrivalDate, departureDate);
             var first = _dateNodes.FirstOrDefault(d => d.Date.Equals(arrivalDate));
             if (first == null)
             {
                 return new string[0];
             }
 
-            return first.Rates.Select(e => e.Rate).Where(canBeUsedForDate.IsSatisfiedBy).Select(compliant => compliant.RateCode).ToArray();
-
-
+            return first.Rates.Select(e=>e.Rate).Where(canBeUsedForDate.IsSatisfiedBy).Select(compliant => compliant.RateCode).ToArray();
         }
 
 

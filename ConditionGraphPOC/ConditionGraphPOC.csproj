@@ -45,15 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Conditions\RateCanBeUsedForRoomstay.cs" />
+    <Compile Include="Conditions\FirstDateMustNotBeClosedForArrival.cs" />
     <Compile Include="Conditions\RateMustApplyForAllDatesInPeriod.cs" />
     <Compile Include="Conditions\Specification.cs" />
-    <Compile Include="Model\ClosingColor.cs" />
     <Compile Include="Model\Date.cs" />
     <Compile Include="Model\DateNode.cs" />
-    <Compile Include="Model\Edges\ClosingColorDateEdge.cs" />
-    <Compile Include="Model\Edges\RateClosingColorEdge.cs" />
-    <Compile Include="Model\Edges\RateDateEdge.cs" />
     <Compile Include="Model\Period.cs" />
+    <Compile Include="Model\RateForDateEdge.cs" />
     <Compile Include="Model\RateNode.cs" />
     <Compile Include="Model\RateProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

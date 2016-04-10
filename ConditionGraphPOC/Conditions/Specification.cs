@@ -35,7 +35,7 @@ namespace ConditionGraphPOC.Conditions
 
     public class AndSpecification<TCandidate> : CompositeSpecification<TCandidate>
     {
-        protected AndSpecification(ISpecification<TCandidate> a, ISpecification<TCandidate> b) : base(a, b) { }
+        public AndSpecification(ISpecification<TCandidate> a, ISpecification<TCandidate> b) : base(a, b) { }
 
         public override bool IsSatisfiedBy(TCandidate candidate)
         {

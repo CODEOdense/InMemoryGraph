@@ -18,7 +18,7 @@ namespace ConditionGraphPOC.Conditions
 
         public bool IsSatisfiedBy(RateNode candidate)
         {
-            var actual = new Period(candidate.Dates.Select(d => d.Date.Date).Intersect(DesiredPeriod.DatesInPeriod).ToArray());
+            var actual = new Period(candidate.Dates.Select(e=>e.Date.Date).Intersect(DesiredPeriod.DatesInPeriod).ToArray());
             return actual.Equals(DesiredPeriod);
         }
     }

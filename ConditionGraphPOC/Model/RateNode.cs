@@ -1,5 +1,4 @@
-﻿using ConditionGraphPOC.Model.Edges;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,32 +9,19 @@ namespace ConditionGraphPOC.Model
     public class RateNode
     {
         public readonly string RateCode;
-        private RateDateEdge[] _dates;
-        public IEnumerable<RateDateEdge> Dates { get { return _dates; } }
+        private RateForDateEdge[] _dates;
+        public IEnumerable<RateForDateEdge> Dates { get { return _dates; } }
 
-        public RateNode(string rateCode, RateDateEdge[] dates)
+        public RateNode(string rateCode, RateForDateEdge[] dates = null)
         {
             if (rateCode == null) throw new ArgumentNullException("rateCode");
-            if (dates == null) throw new ArgumentNullException("dates");
             RateCode = rateCode;
-            _dates = dates;
+            _dates = dates ?? new RateForDateEdge[0];
         }
 
-        public RateNode(string rateCode) : this(rateCode, new RateDateEdge[0]) { }
-
-        public void AddDate(DateNode d)
+        public void AddDateEdge(RateForDateEdge d)
         {
-            var edge = new RateDateEdge(this, d);
-            AddDateEdge(edge);
-            d.AddRateEdge(edge);
-        }
-
-        public void AddDateEdge(RateDateEdge e)
-        {
-            if (e.Rate != this)
-                throw new InvalidOperationException("That rate is not me!!");
-
-            _dates = Dates.Concat(Enumerable.Repeat<RateDateEdge>(e, 1)).ToArray();
+            _dates = Dates.Concat(Enumerable.Repeat(d, 1)).ToArray();
         }
     }
 }
